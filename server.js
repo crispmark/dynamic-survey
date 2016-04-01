@@ -10,7 +10,7 @@ app.get('/', function(req, res) {
 
 //initialize http server
 const http = require('http').Server(app);
-const port = 3000;
+const port = process.env.port;
 http.listen(port, function() {
   console.log('listening on *:', port);
 });
