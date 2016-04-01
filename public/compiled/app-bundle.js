@@ -71,106 +71,142 @@
 	  displayName: 'Survey',
 	
 	
-	  // initial expression is empty
+	  //initial destination, location, and transportation are "none"
 	  getInitialState: function getInitialState() {
-	    return {};
+	    return {
+	      destination: "none",
+	      location: "none",
+	      transportation: "none"
+	    };
+	  },
+	
+	  //set the destination to the new selection
+	  setDestination: function setDestination(event) {
+	    this.setState({ destination: event.target.value });
+	  },
+	
+	  //set the location to the new selection
+	  setLocation: function setLocation(event) {
+	    this.setState({ location: event.target.value });
 	  },
 	
 	  render: function render() {
+	    var destination = this.state.destination;
+	    var locImgSrc = getLocationImage(this.state.location);
+	    if (locImgSrc) {
+	      var locImg = _react2.default.createElement('img', { src: locImgSrc });
+	    }
+	
 	    return _react2.default.createElement(
 	      'div',
-	      null,
+	      { id: destination },
+	      locImg,
 	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'I want to plan a ',
+	        'div',
+	        { className: 'surveyText' },
 	        _react2.default.createElement(
-	          'span',
+	          'p',
 	          null,
+	          'I want to plan',
 	          _react2.default.createElement(
-	            'select',
+	            'span',
 	            null,
-	            _react2.default.createElement('option', { value: 'none' }),
 	            _react2.default.createElement(
-	              'option',
-	              { value: 'romance' },
-	              'romantic getaway'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'wedding' },
-	              'wedding'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'cruise' },
-	              'cruise'
-	            )
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'where I stay ',
-	        _react2.default.createElement(
-	          'span',
-	          null,
-	          _react2.default.createElement(
-	            'select',
-	            null,
-	            _react2.default.createElement('option', { value: 'none' }),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'downtown' },
-	              'downtown'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'beach' },
-	              'on the beach'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'tent' },
-	              'in a tent'
-	            )
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'and arrive by ',
-	        _react2.default.createElement(
-	          'span',
-	          null,
-	          _react2.default.createElement(
-	            'select',
-	            null,
-	            _react2.default.createElement('option', { value: 'none' }),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'plane' },
-	              'plane'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'train' },
-	              'train'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'boat' },
-	              'boat'
+	              'select',
+	              { onChange: this.setDestination },
+	              _react2.default.createElement('option', { value: 'none' }),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'romance' },
+	                'a romantic getaway'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'adventure' },
+	                'an adventure'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'cruise' },
+	                'a cruise'
+	              )
 	            )
 	          )
 	        ),
-	        '.'
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'where I stay',
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            _react2.default.createElement(
+	              'select',
+	              { onChange: this.setLocation },
+	              _react2.default.createElement('option', { value: 'none' }),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'downtown' },
+	                'downtown'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'beach' },
+	                'on the beach'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'tent' },
+	                'in a tent'
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'and arrive by',
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            _react2.default.createElement(
+	              'select',
+	              null,
+	              _react2.default.createElement('option', { value: 'none' }),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'plane' },
+	                'plane.'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'train' },
+	                'train.'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'boat' },
+	                'boat.'
+	              )
+	            )
+	          )
+	        )
 	      )
 	    );
 	  }
 	});
+	
+	//returns the image source for the provided location
+	function getLocationImage(location) {
+	  switch (location) {
+	    case "downtown":
+	      return "/images/skyscraper.png";
+	    case "beach":
+	      return "/images/palmtree.png";
+	    case "tent":
+	      return "/images/tent.png";
+	  }
+	}
 	
 	// adds calculator to DOM
 	_reactDom2.default.render(_react2.default.createElement(Survey, null), document.getElementById('container'));

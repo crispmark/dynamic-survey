@@ -1,0 +1,54 @@
+body {
+  margin: 0px;
+  background-color: #607D8B;
+}
+
+
+#adventure {
+  background: url(/images/adventure.jpg);
+}
+
+#romance {
+  background: url(/images/romance.jpg);
+}
+
+#cruise {
+  background: url(/images/cruise.jpg);
+}
+
+#adventure, #romance, #cruise {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-size: 100vw auto;
+  background-repeat: no-repeat;
+}
+
+
+.surveyText {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.surveyText, select, option {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  font-family: sans-serif;
+  background-color: transparent;
+}
+
+option {
+  background-color: #607D8B;
+}
+
+
+select, select:active {
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 2px solid white;
+  padding: 2px 0px;
+}
