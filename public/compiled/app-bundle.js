@@ -90,17 +90,27 @@
 	    this.setState({ location: event.target.value });
 	  },
 	
+	  //set the transportation to the new selection
+	  setTransportation: function setTransportation(event) {
+	    this.setState({ transportation: event.target.value });
+	  },
+	
 	  render: function render() {
 	    var destination = this.state.destination;
 	    var locImgSrc = getLocationImage(this.state.location);
 	    if (locImgSrc) {
 	      var locImg = _react2.default.createElement('img', { src: locImgSrc });
 	    }
+	    var transImgSrc = getTransportationImage(this.state.transportation);
+	    if (transImgSrc) {
+	      var transImg = _react2.default.createElement('img', { src: transImgSrc });
+	    }
 	
 	    return _react2.default.createElement(
 	      'div',
 	      { id: destination },
 	      locImg,
+	      transImg,
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'surveyText' },
@@ -171,7 +181,7 @@
 	            null,
 	            _react2.default.createElement(
 	              'select',
-	              null,
+	              { onChange: this.setTransportation },
 	              _react2.default.createElement('option', { value: 'none' }),
 	              _react2.default.createElement(
 	                'option',
@@ -205,6 +215,17 @@
 	      return "/images/palmtree.png";
 	    case "tent":
 	      return "/images/tent.png";
+	  }
+	}
+	//returns the image source for the provided transportation
+	function getTransportationImage(transportation) {
+	  switch (transportation) {
+	    case "plane":
+	      return "/images/plane.png";
+	    case "train":
+	      return "/images/train.png";
+	    case "boat":
+	      return "/images/boat.png";
 	  }
 	}
 	

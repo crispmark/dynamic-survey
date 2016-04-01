@@ -24,16 +24,28 @@ var Survey = React.createClass({
     this.setState({location: event.target.value});
   },
 
+  //set the transportation to the new selection
+  setTransportation: function(event) {
+    this.setState({transportation: event.target.value});
+  },
+
   render: function() {
+    //here we determine how our page will look based on the current state
+    //currently we just set the background and a couple images
     var destination = this.state.destination;
     var locImgSrc = getLocationImage(this.state.location);
     if (locImgSrc) {
       var locImg = (<img src={locImgSrc}/>)
     }
+    var transImgSrc = getTransportationImage(this.state.transportation);
+    if (transImgSrc) {
+      var transImg = (<img src={transImgSrc}/>)
+    }
 
     return(
       <div id={destination}>
         {locImg}
+        {transImg}
         <div className="surveyText">
           <p>I want to plan<span>
             <select onChange={this.setDestination}>
@@ -52,7 +64,7 @@ var Survey = React.createClass({
             </select>
           </span></p>
           <p>and arrive by<span>
-            <select>
+            <select onChange={this.setTransportation}>
               <option value="none"></option>
               <option value="plane">plane.</option>
               <option value="train">train.</option>
@@ -74,6 +86,17 @@ function getLocationImage(location) {
     return "/images/palmtree.png"
     case "tent":
     return "/images/tent.png"
+  }
+}
+//returns the image source for the provided transportation
+function getTransportationImage(transportation) {
+  switch(transportation) {
+    case "plane":
+    return "/images/plane.png"
+    case "train":
+    return "/images/train.png"
+    case "boat":
+    return "/images/boat.png"
   }
 }
 
