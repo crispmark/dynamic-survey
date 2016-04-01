@@ -3,6 +3,9 @@ body {
   background-color: #607D8B;
 }
 
+#preload-01 { background: url(/images/adventure.jpg) no-repeat -9999px -9999px; }
+#preload-02 { background: url(/images/romance.jpg) no-repeat -9999px -9999px; }
+#preload-03 { background: url(/images/cruise.jpg) no-repeat -9999px -9999px; }
 
 #adventure {
   background: url(/images/adventure.jpg);

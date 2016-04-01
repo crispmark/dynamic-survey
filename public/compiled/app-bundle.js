@@ -96,6 +96,8 @@
 	  },
 	
 	  render: function render() {
+	    //here we determine how our page will look based on the current state
+	    //currently we just set the background and a couple images
 	    var destination = this.state.destination;
 	    var locImgSrc = getLocationImage(this.state.location);
 	    if (locImgSrc) {
